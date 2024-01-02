@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -155,7 +156,7 @@ fun HPlayer(player: ExoPlayer) {
 
     LaunchedEffect(Unit) {
         while (true) {
-            currentTime = formatTime(player.contentBufferedPosition)
+            currentTime = formatTime(player.currentPosition)
             delay(200) // Update time every second
         }
     }
@@ -173,9 +174,10 @@ fun HPlayer(player: ExoPlayer) {
         )
         Text(
             text = currentTime,
+            color = Color.White, // Set the text color to white
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(16.dp),
+                .padding(8.dp),
             // Add the style for the Text composable as needed
         )
     }
