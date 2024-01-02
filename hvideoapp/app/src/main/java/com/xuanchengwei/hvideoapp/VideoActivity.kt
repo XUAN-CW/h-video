@@ -2,11 +2,18 @@ package com.xuanchengwei.hvideoapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
@@ -15,6 +22,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
+import java.util.concurrent.TimeUnit
 
 class VideoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,15 +51,34 @@ class VideoActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun VideoPlayer(player: ExoPlayer) {
-    AndroidView(
-        modifier = Modifier.fillMaxWidth(),
-        factory = { context ->
-            PlayerView(context).apply {
-                this.player = player
+    var currentTime by remember { mutableStateOf("00:00") }
+
+    LaunchedEffect(player) {
+        snapshotFlow { player.currentPosition }
+            .collect { position ->
+                currentTime = formatTime(position)
             }
-        }
-    )
+    }
+
+    Column {
+        AndroidView(
+            modifier = Modifier.fillMaxWidth(),
+            factory = { context ->
+                PlayerView(context).apply {
+                    this.player = player
+                }
+            }
+        )
+        Text(text = currentTime)
+    }
+}
+
+fun formatTime(millis: Long): String {
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(millis)
+    val seconds = TimeUnit.MILLISECONDS.toSeconds(millis) % 60
+    return String.format("%02d:%02d", minutes, seconds)
 }
 
