@@ -1,6 +1,5 @@
 package com.xuanchengwei.hvideoapp
 import android.content.Intent
-import android.os.Parcel
 import android.os.Parcelable
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,12 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.google.common.reflect.TypeToken
-import com.xuanchengwei.baizizhan.util.JsonUtils
-import kotlinx.android.parcel.Parcelize
 
 @Composable
 fun VideoList() {
@@ -78,16 +73,14 @@ fun VideoCard(videoInfo: VideoInfo) {
                     .padding(0.dp).clickable {
 
                         val intent = Intent(context, VideoActivity::class.java)
-                        intent.putExtra("videoInfo", videoInfo)
+                        intent.putExtra(VideoInfo::class.java.name, videoInfo)
                         context.startActivity(intent)
                     }
             )
-//            Spacer(modifier = Modifier.height(0.dp))
             Text(
                 text = videoInfo.title,
                 modifier = Modifier.padding(8.dp)
             )
-            // Add other composables for additional details like views, comments, etc.
         }
     }
 }
