@@ -11,7 +11,7 @@ class VideoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val videoInfo = intent.getParcelableExtra("videoInfo",VideoInfo::class.java)
+        val videoInfo = intent.getParcelableExtra(VideoInfo::class.java.name,VideoInfo::class.java)
         Log.i("aa", videoInfo.toString())
         setContent {
             Text(text = videoInfo!!.imageUrl)
