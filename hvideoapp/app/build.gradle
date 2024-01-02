@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize' // This is the plugin for Parcelize
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.xuanchengwei.hvideoapp"
-        minSdk 30
+        minSdk 33
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -65,6 +66,15 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
+    // 图片
     implementation 'com.github.bumptech.glide:compose:1.0.0-alpha.3'
 
+    // 一些工具类
+    implementation 'com.google.guava:guava:32.0.0-android'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
+    // 序列化
+    implementation 'com.google.code.gson:gson:2.10.1'
 }
