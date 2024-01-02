@@ -23,7 +23,7 @@ fun VideoList() {
 
     val videoList = listOf(
         Video(
-            imageUrl = "https://via.placeholder.com/150.jpg",
+            imageUrl = "http://vjs.zencdn.net/v/oceans.mp4",
             title = "First Video Title",
             views = "1M views",
             duration = "12:35"
