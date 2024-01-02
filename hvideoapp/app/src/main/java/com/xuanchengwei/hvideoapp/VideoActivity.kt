@@ -69,7 +69,7 @@ fun VideoPlayer(player: ExoPlayer) {
     LaunchedEffect(Unit) {
         while (true) {
             currentTime = formatTime(player.currentPosition )
-            delay(1000) // Update time every second
+            delay(100) // Update time every second
         }
     }
 
