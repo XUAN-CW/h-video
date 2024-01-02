@@ -7,7 +7,7 @@
   android:layoutDirection="ltr"
   android:background="#CC000000"
   android:orientation="vertical"
-  tools:targetApi="28">
+  >
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -25,10 +25,12 @@
         android:src="@drawable/ic_exo_icon_rewind"/>
 
     <ImageButton android:id="@id/exo_shuffle"
-      style="@style/ExoMediaButton"/>
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
 
     <ImageButton android:id="@id/exo_repeat_toggle"
-      style="@style/ExoMediaButton"/>
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
 
     <ImageButton android:id="@id/exo_play"
       style="@style/ExoMediaButton.Play"/>
