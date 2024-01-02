@@ -8,6 +8,7 @@
         android:id="@+id/hplayer_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:controller_layout_id="@layout/layout_exoplayer_control_views"
         app:use_controller="true"/>
 
 
