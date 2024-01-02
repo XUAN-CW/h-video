@@ -27,6 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
@@ -111,8 +114,41 @@ fun VideoPlayer(player: ExoPlayer) {
 //    }
 }
 
+// Define the listener
+private val playerListener = @UnstableApi object : Player.Listener {
+    // Define the listener
+    private val playerListener = object : Player.Listener {
+        override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+            when (playbackState) {
+                Player.STATE_BUFFERING -> {
+                    // The player is buffering (loading the content)
+                }
+
+                Player.STATE_READY -> {
+                    // The player is ready to play
+                }
+
+                Player.STATE_ENDED -> {
+                    // The content has finished playing
+                }
+
+                Player.STATE_IDLE -> {
+                    // The player does not have any media to play
+                }
+            }
+        }
+
+        override fun onPlayerError(error: PlaybackException) {
+            // Handle player error
+        }
+
+        // ... implement other events that you are interested in
+    }
+}
+
 @Composable
 fun HPlayer(player: ExoPlayer) {
+    player.addListener(playerListener)
     // Remember the current time and update it every second
     var currentTime by remember { mutableStateOf(formatTime(player.contentBufferedPosition)) }
     val context = LocalContext.current
