@@ -1,5 +1,6 @@
 package com.xuanchengwei.hvideoapp
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -63,39 +64,51 @@ class VideoActivity : ComponentActivity() {
 
 @Composable
 fun VideoPlayer(player: ExoPlayer) {
-    var currentTime by remember { mutableStateOf("00:00") }
-    val context = LocalContext.current
 
-    LaunchedEffect(Unit) {
-        while (true) {
-            currentTime = formatTime(player.currentPosition )
-            delay(100) // Update time every second
-        }
-    }
+    AndroidView(
+        factory = { context ->
+            LayoutInflater.from(context).inflate(R.layout.hplayer_layout, null, false).apply {
+                val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                playerView.player = player
+                // Configure additional properties if needed
+            }
+        },
+        modifier = Modifier.fillMaxWidth()
+    )
 
-    Box(modifier = Modifier.fillMaxWidth()) {
-        AndroidView(
-            factory = { ctx ->
-                PlayerView(ctx).apply {
-                    this.player = player
-                    // Remove the controller from the PlayerView, since we're adding our own
-                    this.useController = true
-                }
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 16.dp)
-        ) {
-            // Progress bar (if you want to add a custom one)
-            Spacer(modifier = Modifier.height(4.dp))
-            // Current time text under the progress bar
-            Text(text = currentTime, style = MaterialTheme.typography.bodySmall)
-        }
-    }
+//    var currentTime by remember { mutableStateOf("00:00") }
+//    val context = LocalContext.current
+
+//    LaunchedEffect(Unit) {
+//        while (true) {
+//            currentTime = formatTime(player.currentPosition )
+//            delay(100) // Update time every second
+//        }
+//    }
+
+//    Box(modifier = Modifier.fillMaxWidth()) {
+//        AndroidView(
+//            factory = { context ->
+//                LayoutInflater.from(context).inflate(R.layout.hplayer_layout, null, false).apply {
+//                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+//                    playerView.player = player
+//                    // Configure additional properties if needed
+//                }
+//            },
+//            modifier = Modifier.fillMaxWidth()
+//        )
+////        Column(
+////            horizontalAlignment = Alignment.CenterHorizontally,
+////            modifier = Modifier
+////                .align(Alignment.BottomCenter)
+////                .padding(bottom = 16.dp)
+////        ) {
+////            // Progress bar (if you want to add a custom one)
+////            Spacer(modifier = Modifier.height(4.dp))
+////            // Current time text under the progress bar
+////            Text(text = currentTime, style = MaterialTheme.typography.bodySmall)
+////        }
+//    }
 }
 
 fun formatTime(millis: Long): String {

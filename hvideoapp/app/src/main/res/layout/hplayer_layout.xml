@@ -1,0 +1,13 @@
+<!-- res/layout/hplayer_layout.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/hplayer_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Add any additional custom UI elements here -->
+
+</FrameLayout>
