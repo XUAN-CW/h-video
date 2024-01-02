@@ -1,5 +1,6 @@
 package com.xuanchengwei.hvideoapp
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -149,7 +150,13 @@ private val playerListener = @UnstableApi object : Player.Listener {
 
 @Composable
 fun HPlayer(player: ExoPlayer) {
-    player.addListener(playerListener)
+    player.addListener(object : Player.Listener {
+        override fun onPlaybackStateChanged(playbackState: Int) {
+            Log.i("onPlaybackStateChanged", playbackState.toString())
+        }
+    })
+
+
     // Remember the current time and update it every second
     var currentTime by remember { mutableStateOf(formatTime(player.contentBufferedPosition)) }
     val context = LocalContext.current
