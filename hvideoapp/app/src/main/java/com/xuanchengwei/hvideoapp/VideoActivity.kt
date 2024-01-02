@@ -2,6 +2,7 @@ package com.xuanchengwei.hvideoapp
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -173,6 +174,15 @@ fun HPlayer(player: ExoPlayer) {
             factory = { ctx ->
                 LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
                     val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                    playerView.setControllerVisibilityListener(
+                        PlayerView.ControllerVisibilityListener { visibility ->
+                            if (visibility == View.VISIBLE) {
+                                Log.i("PlayerView.ControllerVisibilityListener","View.VISIBLE")
+                            } else {
+                                Log.i("PlayerView.ControllerVisibilityListener","not View.VISIBLE")
+                            }
+                        }
+                    )
                     playerView.player = player
                     // Configure additional properties if needed
                 }
