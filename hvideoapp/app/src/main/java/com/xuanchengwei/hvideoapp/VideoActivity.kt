@@ -56,7 +56,7 @@ class VideoActivity : ComponentActivity() {
                 }
             }
 
-            VideoPlayer(player = player)
+            HPlayer(player = player)
         }
     }
 }
@@ -76,15 +76,15 @@ fun VideoPlayer(player: ExoPlayer) {
         modifier = Modifier.fillMaxWidth()
     )
 
-//    var currentTime by remember { mutableStateOf("00:00") }
+    var currentTime by remember { mutableStateOf("00:00") }
 //    val context = LocalContext.current
 
-//    LaunchedEffect(Unit) {
-//        while (true) {
-//            currentTime = formatTime(player.currentPosition )
-//            delay(100) // Update time every second
-//        }
-//    }
+    LaunchedEffect(Unit) {
+        while (true) {
+            currentTime = formatTime(player.currentPosition )
+            delay(100) // Update time every second
+        }
+    }
 
 //    Box(modifier = Modifier.fillMaxWidth()) {
 //        AndroidView(
@@ -115,4 +115,21 @@ fun formatTime(millis: Long): String {
     val minutes = TimeUnit.MILLISECONDS.toMinutes(millis)
     val seconds = TimeUnit.MILLISECONDS.toSeconds(millis) % 60
     return String.format("%02d:%02d", minutes, seconds)
+}
+
+
+
+@Composable
+fun HPlayer(player: ExoPlayer) {
+    AndroidView(
+        factory = { context ->
+            LayoutInflater.from(context).inflate(R.layout.hplayer_layout, null, false).apply {
+                val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                playerView.player = player
+                // Configure additional properties if needed
+            }
+        },
+        modifier = Modifier.fillMaxWidth()
+        // Add other modifiers if necessary
+    )
 }
