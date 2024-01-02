@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.xuanchengwei.hvideoapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.xuanchengwei.hvideoapp"
         minSdk 33
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -81,4 +81,8 @@ dependencies {
 
     // 视频
     implementation "androidx.media3:media3-exoplayer:1.2.0" // Replace with the latest version
+    implementation 'androidx.media3:media3-exoplayer-dash:1.2.0'
+    implementation 'androidx.media3:media3-ui:1.2.0'
+
+
 }
