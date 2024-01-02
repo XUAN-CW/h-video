@@ -156,18 +156,8 @@ fun HPlayer(player: ExoPlayer) {
             Log.i("onPlaybackStateChanged", playbackState.toString())
         }
     })
-
-
-    // Remember the current time and update it every second
-    var currentTime by remember { mutableStateOf(formatTime(player.contentBufferedPosition)) }
     val context = LocalContext.current
 
-    LaunchedEffect(Unit) {
-        while (true) {
-            currentTime = formatTime(player.currentPosition) + "/" + formatTime(player.duration)
-            delay(200) // Update time every second
-        }
-    }
 
     Box(modifier = Modifier.fillMaxWidth()) {
         AndroidView(
@@ -188,14 +178,6 @@ fun HPlayer(player: ExoPlayer) {
                 }
             },
             modifier = Modifier.fillMaxWidth()
-        )
-        Text(
-            text = currentTime,
-            color = Color.White, // Set the text color to white
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(8.dp),
-            // Add the style for the Text composable as needed
         )
     }
 }
