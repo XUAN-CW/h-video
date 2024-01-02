@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="left"
-        app:constraint_referenced_ids="exo_pause,exo_play" />
+        app:constraint_referenced_ids="exo_play" />
 
     <ImageButton
         android:id="@+id/exo_rew"
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="exo_pause,exo_play" />
+        app:constraint_referenced_ids="exo_play" />
 
     <ImageButton
         android:id="@+id/exo_play"
@@ -59,16 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/exo_pause"
-        style="@style/ExoMediaButton.Pause"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@drawable/ic_exo_icon_pause"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
