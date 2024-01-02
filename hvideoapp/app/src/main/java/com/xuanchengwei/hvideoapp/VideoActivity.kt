@@ -67,88 +67,6 @@ class VideoActivity : ComponentActivity() {
     }
 }
 
-
-@Composable
-fun VideoPlayer(player: ExoPlayer) {
-
-    AndroidView(
-        factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.hplayer_layout, null, false).apply {
-                val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-                playerView.player = player
-                // Configure additional properties if needed
-            }
-        },
-        modifier = Modifier.fillMaxWidth()
-    )
-
-    var currentTime by remember { mutableStateOf("00:00") }
-//    val context = LocalContext.current
-
-    LaunchedEffect(Unit) {
-        while (true) {
-            currentTime = formatTime(player.currentPosition )
-            delay(100) // Update time every second
-        }
-    }
-
-//    Box(modifier = Modifier.fillMaxWidth()) {
-//        AndroidView(
-//            factory = { context ->
-//                LayoutInflater.from(context).inflate(R.layout.hplayer_layout, null, false).apply {
-//                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-//                    playerView.player = player
-//                    // Configure additional properties if needed
-//                }
-//            },
-//            modifier = Modifier.fillMaxWidth()
-//        )
-////        Column(
-////            horizontalAlignment = Alignment.CenterHorizontally,
-////            modifier = Modifier
-////                .align(Alignment.BottomCenter)
-////                .padding(bottom = 16.dp)
-////        ) {
-////            // Progress bar (if you want to add a custom one)
-////            Spacer(modifier = Modifier.height(4.dp))
-////            // Current time text under the progress bar
-////            Text(text = currentTime, style = MaterialTheme.typography.bodySmall)
-////        }
-//    }
-}
-
-// Define the listener
-private val playerListener = @UnstableApi object : Player.Listener {
-    // Define the listener
-    private val playerListener = object : Player.Listener {
-        override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-            when (playbackState) {
-                Player.STATE_BUFFERING -> {
-                    // The player is buffering (loading the content)
-                }
-
-                Player.STATE_READY -> {
-                    // The player is ready to play
-                }
-
-                Player.STATE_ENDED -> {
-                    // The content has finished playing
-                }
-
-                Player.STATE_IDLE -> {
-                    // The player does not have any media to play
-                }
-            }
-        }
-
-        override fun onPlayerError(error: PlaybackException) {
-            // Handle player error
-        }
-
-        // ... implement other events that you are interested in
-    }
-}
-
 @Composable
 fun HPlayer(player: ExoPlayer) {
     player.addListener(object : Player.Listener {
@@ -180,10 +98,4 @@ fun HPlayer(player: ExoPlayer) {
             modifier = Modifier.fillMaxWidth()
         )
     }
-}
-
-fun formatTime(millis: Long): String {
-    val minutes = TimeUnit.MILLISECONDS.toMinutes(millis)
-    val seconds = TimeUnit.MILLISECONDS.toSeconds(millis) % 60
-    return String.format("%02d:%02d", minutes, seconds)
 }
