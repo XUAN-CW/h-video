@@ -13,7 +13,6 @@ class VideoActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val videoInfo = intent.getParcelableExtra(IntentExtraKey.VIDEO_ACTIVITY_KEY,VideoInfo::class.java)
-        Log.i("aa", videoInfo.toString())
         setContent {
             Text(text = videoInfo!!.imageUrl)
         }
