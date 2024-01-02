@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
 
 @Composable
 fun VideoList() {
@@ -73,7 +74,7 @@ fun VideoCard(videoInfo: VideoInfo) {
                     .padding(0.dp).clickable {
 
                         val intent = Intent(context, VideoActivity::class.java)
-                        intent.putExtra(VideoInfo::class.java.name, videoInfo)
+                        intent.putExtra(IntentExtraKey.VIDEO_ACTIVITY_KEY, videoInfo)
                         context.startActivity(intent)
                     }
             )
