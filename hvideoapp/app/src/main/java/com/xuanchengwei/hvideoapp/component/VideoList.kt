@@ -1,4 +1,4 @@
-package com.xuanchengwei.hvideoapp
+package com.xuanchengwei.hvideoapp.component
 import android.content.Intent
 import android.os.Parcelable
 import androidx.compose.foundation.clickable
@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.xuanchengwei.hvideoapp.VideoActivity
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
 
 @Composable
