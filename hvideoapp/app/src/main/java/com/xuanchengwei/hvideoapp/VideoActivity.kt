@@ -156,7 +156,7 @@ fun HPlayer(player: ExoPlayer) {
 
     LaunchedEffect(Unit) {
         while (true) {
-            currentTime = formatTime(player.currentPosition)
+            currentTime = formatTime(player.currentPosition) + "/" + formatTime(player.duration)
             delay(200) // Update time every second
         }
     }
