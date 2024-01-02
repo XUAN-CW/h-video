@@ -111,25 +111,46 @@ fun VideoPlayer(player: ExoPlayer) {
 //    }
 }
 
+@Composable
+fun HPlayer(player: ExoPlayer) {
+    // Remember the current time and update it every second
+    var currentTime by remember { mutableStateOf(formatTime(player.contentBufferedPosition)) }
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            currentTime = formatTime(player.contentBufferedPosition)
+            delay(200) // Update time every second
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxWidth()) {
+        AndroidView(
+            factory = { ctx ->
+                LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
+                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                    playerView.player = player
+                    // Configure additional properties if needed
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        if(player.sh){
+
+            Text(
+                text = currentTime,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp),
+                // Add the style for the Text composable as needed
+            )
+        }
+    }
+}
+
 fun formatTime(millis: Long): String {
     val minutes = TimeUnit.MILLISECONDS.toMinutes(millis)
     val seconds = TimeUnit.MILLISECONDS.toSeconds(millis) % 60
     return String.format("%02d:%02d", minutes, seconds)
-}
-
-
-
-@Composable
-fun HPlayer(player: ExoPlayer) {
-    AndroidView(
-        factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.hplayer_layout, null, false).apply {
-                val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-                playerView.player = player
-                // Configure additional properties if needed
-            }
-        },
-        modifier = Modifier.fillMaxWidth()
-        // Add other modifiers if necessary
-    )
 }
