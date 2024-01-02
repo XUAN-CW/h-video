@@ -8,8 +8,11 @@
         android:id="@+id/hplayer_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:controller_layout_id="@layout/layout_exoplayer_control_views"
-        app:use_controller="true"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:auto_show="true"
+        app:surface_type="surface_view"
+        app:use_controller="true"
+        app:controller_layout_id="@layout/layout_exoplayer_control_views"/>
 
 
 </FrameLayout>
