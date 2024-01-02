@@ -30,6 +30,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
+import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 
 class VideoActivity : ComponentActivity() {
@@ -65,11 +66,11 @@ fun VideoPlayer(player: ExoPlayer) {
     var currentTime by remember { mutableStateOf("00:00") }
     val context = LocalContext.current
 
-    LaunchedEffect(player) {
-        snapshotFlow { player.currentPosition }
-            .collect { position ->
-                currentTime = formatTime(position)
-            }
+    LaunchedEffect(Unit) {
+        while (true) {
+            currentTime = formatTime(player.currentPosition )
+            delay(1000) // Update time every second
+        }
     }
 
     Box(modifier = Modifier.fillMaxWidth()) {
