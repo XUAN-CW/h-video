@@ -171,17 +171,13 @@ fun HPlayer(player: ExoPlayer) {
             },
             modifier = Modifier.fillMaxWidth()
         )
-//
-//        if(player.sh){
-//
-            Text(
-                text = currentTime,
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(16.dp),
-                // Add the style for the Text composable as needed
-            )
-//        }
+        Text(
+            text = currentTime,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp),
+            // Add the style for the Text composable as needed
+        )
     }
 }
 
