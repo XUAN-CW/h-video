@@ -1,0 +1,87 @@
+#*.torrent
+*.db
+
+
+
+**/pending
+**/private
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+modules.xml
+
+HELP.md
+target/
+
+**/.idea
+**/*.iws
+**/*.iml
+**/*.ipr
+**/modules.xml
+
+
+**/mvnw
+**/mvnw.cmd
+**/.mvn
+**/target/
+
+### Maven ###
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Java ###
+# Compiled class file
+*.class
+
+# Numerous always-ignore extensions
+*.bak
+*.patch
+*.diff
+*.err
+
+# temp file for git conflict merging
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+*.sass-cache
+*.tmp.html
+*.dump
+
+# OS or Editor folders
+.DS_Store
+._*
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+thumbs.db
+*.iml
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+.idea
+node_modules/
+jscoverage_lib/
+bower_components/
+dist/
