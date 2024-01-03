@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.Hvideoapp" parent="android:Theme.Material.Light.NoActionBar" />
+    <attr name="themeColor" format="color"/>
 </resources>
