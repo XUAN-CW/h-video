@@ -10,8 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.viewinterop.AndroidView
 import com.xuanchengwei.gsyvideoplayerdemo.ui.theme.GSYVideoPlayerDemoTheme
 
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+import androidx.compose.ui.viewinterop.AndroidView
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+
+                    val videoUrl = "http://vjs.zencdn.net/v/oceans.mp4"
+                    GSYVideoPlayerComposable(videoUrl)
                 }
             }
         }
@@ -43,4 +48,16 @@ fun GreetingPreview() {
     GSYVideoPlayerDemoTheme {
         Greeting("Android")
     }
+}
+
+
+
+@Composable
+fun GSYVideoPlayerComposable(url: String) {
+    AndroidView(factory = { context ->
+        StandardGSYVideoPlayer(context).apply {
+            setUp(url, true, "Video Title")
+            // Add any additional configuration here
+        }
+    })
 }

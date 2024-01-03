@@ -10,6 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        // Add other necessary repositories here
+        // For example, if you're using GSYVideoPlayer, you might need:
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "GSYVideoPlayerDemo"
