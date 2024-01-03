@@ -29,6 +29,11 @@
       style="@style/ExoMediaButton.FastForward"
         android:src="@drawable/ic_exo_icon_fastforward"/>
 
+
+
+    <ImageButton android:id="@+id/exo_minimal_fullscreen2"
+        style="@style/ExoStyledControls.Button.Bottom.FullScreen"
+        android:src="@drawable/full_screen"/>
   </LinearLayout>
 
   <LinearLayout

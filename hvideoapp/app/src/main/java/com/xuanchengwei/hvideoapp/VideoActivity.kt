@@ -1,4 +1,6 @@
 package com.xuanchengwei.hvideoapp
+import android.app.Activity
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -39,8 +41,10 @@ import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 
 class VideoActivity : ComponentActivity() {
+    private lateinit var exoPlayer: ExoPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -62,40 +66,80 @@ class VideoActivity : ComponentActivity() {
                 }
             }
 
-            HPlayer(player = player)
+//            HPlayer(player = player)
+            VideoPlayerCompose(videoInfo!!.imageUrl)
         }
     }
 }
 
+//@Composable
+//fun HPlayer(player: ExoPlayer) {
+//    player.addListener(object : Player.Listener {
+//        override fun onPlaybackStateChanged(playbackState: Int) {
+//            Log.i("HPlayer", "Playback State: $playbackState")
+//        }
+//    })
+//
+//    Box(modifier = Modifier.fillMaxWidth()) {
+//        AndroidView(
+//            factory = { ctx ->
+//                LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
+//                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+//                    playerView.player = player
+//                    // Additional configuration as needed
+//                }
+//            },
+//            modifier = Modifier.fillMaxWidth()
+//        )
+//    }
+//}
+
 @Composable
-fun HPlayer(player: ExoPlayer) {
-    player.addListener(object : Player.Listener {
-        override fun onPlaybackStateChanged(playbackState: Int) {
-            Log.i("onPlaybackStateChanged", playbackState.toString())
-        }
-    })
-    val context = LocalContext.current
+fun VideoPlayerCompose(url: String) {
+    AndroidView(
+        modifier = Modifier.fillMaxWidth(),
+        factory = { context ->
+            // Inflate your custom layout
+            val view = LayoutInflater.from(context)
+                .inflate(R.layout.activity_simple_detail_player, null, false)
 
+            // Find your video player in the layout
+            val detailPlayer = view.findViewById<StandardGSYVideoPlayer>(R.id.detail_player)
+            // Configure the player as you like
+            detailPlayer.getTitleTextView().visibility = View.GONE
+            detailPlayer.getBackButton().visibility = View.GONE
+            detailPlayer.setUp(url, true, "Video Title")
 
-    Box(modifier = Modifier.fillMaxWidth()) {
-        AndroidView(
-            factory = { ctx ->
-                LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
-                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-                    playerView.setControllerVisibilityListener(
-                        PlayerView.ControllerVisibilityListener { visibility ->
-                            if (visibility == View.VISIBLE) {
-                                Log.i("PlayerView.ControllerVisibilityListener","View.VISIBLE")
-                            } else {
-                                Log.i("PlayerView.ControllerVisibilityListener","not View.VISIBLE")
-                            }
-                        }
-                    )
-                    playerView.player = player
-                // Configure additional properties if needed
+            // Assuming detailPlayer is your StandardGSYVideoPlayer instance
+            // Assuming detailPlayer is your StandardGSYVideoPlayer instance
+            detailPlayer.fullscreenButton.setOnClickListener {
+                // This is where you handle the fullscreen button click
+                if (!detailPlayer.isIfCurrentIsFullscreen) {
+                    // Enter fullscreen mode
+                    detailPlayer.startWindowFullscreen(context, false, true)
+                } else {
+                    // Exit fullscreen mode
+                    detailPlayer.onBackFullscreen()
                 }
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-    }
+            }
+            val activity = context as? Activity
+
+            detailPlayer.fullscreenButton.setOnClickListener {
+
+                if (!detailPlayer.isIfCurrentIsFullscreen) {
+                    // Enter full screen
+                    detailPlayer.startWindowFullscreen(activity, true, true);
+                    activity!!.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                } else {
+                    // Exit full screen
+                    // Implement the logic to restore the player to its original state
+                    activity!!.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                }
+            }
+
+
+            // Return the view to be displayed
+            view
+        }
+    )
 }
