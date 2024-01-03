@@ -92,7 +92,7 @@ fun HPlayer(player: ExoPlayer) {
                         }
                     )
                     playerView.player = player
-                    // Configure additional properties if needed
+                // Configure additional properties if needed
                 }
             },
             modifier = Modifier.fillMaxWidth()
