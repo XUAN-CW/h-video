@@ -44,7 +44,6 @@ import java.util.concurrent.TimeUnit
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 
 class VideoActivity : ComponentActivity() {
-    private lateinit var exoPlayer: ExoPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -66,33 +65,11 @@ class VideoActivity : ComponentActivity() {
                 }
             }
 
-//            HPlayer(player = player)
             VideoPlayerCompose(videoInfo!!.imageUrl)
         }
     }
 }
 
-//@Composable
-//fun HPlayer(player: ExoPlayer) {
-//    player.addListener(object : Player.Listener {
-//        override fun onPlaybackStateChanged(playbackState: Int) {
-//            Log.i("HPlayer", "Playback State: $playbackState")
-//        }
-//    })
-//
-//    Box(modifier = Modifier.fillMaxWidth()) {
-//        AndroidView(
-//            factory = { ctx ->
-//                LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
-//                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-//                    playerView.player = player
-//                    // Additional configuration as needed
-//                }
-//            },
-//            modifier = Modifier.fillMaxWidth()
-//        )
-//    }
-//}
 
 @Composable
 fun VideoPlayerCompose(url: String) {
