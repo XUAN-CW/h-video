@@ -49,22 +49,6 @@ class VideoActivity : ComponentActivity() {
 
         val videoInfo = intent.getParcelableExtra(IntentExtraKey.VIDEO_ACTIVITY_KEY, VideoInfo::class.java)
         setContent {
-
-            val context = this
-            val player = remember {
-                ExoPlayer.Builder(context).build().apply {
-                    val mediaItem = MediaItem.fromUri(videoInfo!!.imageUrl)
-                    setMediaItem(mediaItem)
-                    prepare()
-                }
-            }
-
-            DisposableEffect(Lifecycle.Event.ON_DESTROY) {
-                onDispose {
-                    player.release()
-                }
-            }
-
             VideoPlayerCompose(videoInfo!!.imageUrl)
         }
     }
