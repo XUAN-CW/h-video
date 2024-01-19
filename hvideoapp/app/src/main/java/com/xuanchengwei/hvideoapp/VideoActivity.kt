@@ -19,8 +19,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -81,7 +83,7 @@ class VideoActivity : ComponentActivity() {
 @OptIn(UnstableApi::class) @Composable
 fun HPlayer(player: ExoPlayer) {
     var currentPosition by remember { mutableStateOf(0L) }
-
+    val allDuration = player.duration
     player.addListener(object : Player.Listener {
         override fun onPlaybackStateChanged(playbackState: Int) {
             Log.i("onPlaybackStateChanged", playbackState.toString())
@@ -90,11 +92,24 @@ fun HPlayer(player: ExoPlayer) {
 
     val context = LocalContext.current
 
-    DisposableEffect(Unit) {
+
+    DisposableEffect(player) {
+        val listener = object : Player.Listener {
+            override fun onPositionDiscontinuity(
+                oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo,reason: Int) {
+                currentPosition = player.currentPosition
+            }
+        }
+
+        player.addListener(listener)
+
         onDispose {
-            player.release()
+            player.removeListener(listener)
         }
     }
+
+
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -108,8 +123,6 @@ fun HPlayer(player: ExoPlayer) {
                 factory = { ctx ->
                     LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
                         val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-
-
                         playerView.setControllerVisibilityListener(
                             PlayerView.ControllerVisibilityListener { visibility ->
                                 if (visibility == View.VISIBLE) {
@@ -146,7 +159,13 @@ fun HPlayer(player: ExoPlayer) {
 
         }
 
+        LinearProgressIndicator(
+            progress = currentPosition.toFloat() /allDuration,
 
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(2.dp),
+        )
 
         Row(
             modifier = Modifier.fillMaxWidth(),
