@@ -112,8 +112,13 @@ fun HPlayer(player: ExoPlayer) {
                 factory = { ctx ->
                     LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
                         val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+
+
+
                         playerView.setControllerVisibilityListener(
                             PlayerView.ControllerVisibilityListener { visibility ->
+                                // Hide the controller after a delay (e.g., 3 seconds)
+                                playerView.hideController()
                                 if (visibility == View.VISIBLE) {
                                     Log.i("PlayerView.ControllerVisibilityListener", "View.VISIBLE")
                                 } else {
@@ -122,8 +127,6 @@ fun HPlayer(player: ExoPlayer) {
                             }
                         )
 
-                        // Hide the controller after a delay (e.g., 3 seconds)
-                        playerView.hideController()
 
                         playerView.player = player
 
