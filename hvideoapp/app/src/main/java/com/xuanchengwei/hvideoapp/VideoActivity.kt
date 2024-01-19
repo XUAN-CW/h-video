@@ -95,8 +95,7 @@ fun HPlayer(player: ExoPlayer) {
 
     DisposableEffect(player) {
         val listener = object : Player.Listener {
-            override fun onPositionDiscontinuity(
-                oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo,reason: Int) {
+            override fun onPositionDiscontinuity(oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo,reason: Int) {
                 currentPosition = player.currentPosition
             }
         }
