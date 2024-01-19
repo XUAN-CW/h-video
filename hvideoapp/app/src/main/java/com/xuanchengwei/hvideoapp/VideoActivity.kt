@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.OptIn
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -140,19 +142,28 @@ fun HPlayer(player: ExoPlayer) {
                     val newPosition = player.currentPosition - 10000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
-                })
+                }
+                    .border(1.dp, Color.Black) // Add a border around the text
+                    .padding(3.dp)
+                )
 
                 Text(text = "<<30s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition - 30000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
-                })
+                }
+                    .border(1.dp, Color.Black) // Add a border around the text
+                    .padding(3.dp)
+                )
 
                 Text(text = "<<5m", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition - 300000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
-                })
+                }
+                    .border(1.dp, Color.Black) // Add a border around the text
+                    .padding(3.dp)
+                )
             }
 
             Row(
@@ -163,19 +174,28 @@ fun HPlayer(player: ExoPlayer) {
                     val newPosition = player.currentPosition + 10000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
-                })
+                }
+                    .border(1.dp, Color.Black) // Add a border around the text
+                    .padding(3.dp)
+                )
 
                 Text(text = ">>30s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition + 30000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
-                })
+                }
+                    .border(1.dp, Color.Black) // Add a border around the text
+                    .padding(3.dp)
+                )
 
                 Text(text = ">>5m", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition + 300000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
-                })
+                }
+                    .border(1.dp, Color.Black) // Add a border around the text
+                    .padding(3.dp)
+                )
             }
         }
 
