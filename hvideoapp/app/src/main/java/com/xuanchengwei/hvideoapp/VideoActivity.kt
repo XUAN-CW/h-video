@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -81,28 +82,46 @@ fun HPlayer(player: ExoPlayer) {
     val context = LocalContext.current
 
 
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight(0.4f)) {
-        AndroidView(
-            factory = { ctx ->
-                LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
-                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-                    playerView.setControllerVisibilityListener(
-                        PlayerView.ControllerVisibilityListener { visibility ->
-                            if (visibility == View.VISIBLE) {
-                                Log.i("PlayerView.ControllerVisibilityListener","View.VISIBLE")
-                            } else {
-                                Log.i("PlayerView.ControllerVisibilityListener","not View.VISIBLE")
+    Box() {
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
+        ) {
+            AndroidView(
+                factory = { ctx ->
+                    LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
+                        val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                        playerView.setControllerVisibilityListener(
+                            PlayerView.ControllerVisibilityListener { visibility ->
+                                if (visibility == View.VISIBLE) {
+                                    Log.i("PlayerView.ControllerVisibilityListener", "View.VISIBLE")
+                                } else {
+                                    Log.i("PlayerView.ControllerVisibilityListener", "not View.VISIBLE")
+                                }
                             }
-                        }
-                    )
-                    playerView.player = player
-                    // Configure additional properties if needed
-                }
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
+                        )
+                        playerView.player = player
+                        // Configure additional properties if needed
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f) // Takes up available space
+            )
+
+            Button(
+                onClick = {
+                    // Handle button click
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp) // Adjust height as needed
+            ) {
+                Text(text = "Click me")
+            }
+        }
     }
+
     
 }
