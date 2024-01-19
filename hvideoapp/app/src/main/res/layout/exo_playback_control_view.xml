@@ -22,14 +22,6 @@
 
         android:src="@drawable/ic_exo_icon_rewind"/>
 
-    <ImageButton android:id="@id/exo_shuffle"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
-    <ImageButton android:id="@id/exo_repeat_toggle"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
     <ImageButton android:id="@id/exo_play_pause"
       style="@style/ExoMediaButton.Play"/>
 
