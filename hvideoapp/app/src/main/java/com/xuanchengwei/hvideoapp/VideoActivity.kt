@@ -134,7 +134,7 @@ fun HPlayer(player: ExoPlayer) {
             ) {
 
                 Button(
-                    modifier = Modifier.size(20.dp),
+                    modifier = Modifier,
                     onClick = {
                         val newPosition = player.currentPosition  - 10000L
                         player.seekTo(newPosition)
