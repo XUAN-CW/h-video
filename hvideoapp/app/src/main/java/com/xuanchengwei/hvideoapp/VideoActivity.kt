@@ -109,5 +109,4 @@ fun HPlayer(player: ExoPlayer) {
             modifier = Modifier.fillMaxWidth()
         )
     }
-    
 }
