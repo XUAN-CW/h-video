@@ -56,11 +56,7 @@ class VideoActivity : ComponentActivity() {
 
             val context = this
             val player = remember {
-                val loadControl: DefaultLoadControl = DefaultLoadControl.Builder()
-                    .setBufferDurationsMs(500, 10000000, 500, 500)
-                    .build()
                 ExoPlayer.Builder(context)
-                    .setLoadControl(loadControl)
                     .build().apply {
                     val mediaItem = MediaItem.fromUri(videoInfo!!.imageUrl)
                     setMediaItem(mediaItem)
