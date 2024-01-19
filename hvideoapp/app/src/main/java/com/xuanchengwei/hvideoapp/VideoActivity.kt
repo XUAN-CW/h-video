@@ -50,7 +50,7 @@ class VideoActivity : ComponentActivity() {
                     .setBufferDurationsMs(5000, 100000, 500, 500)
                     .build()
                 ExoPlayer.Builder(context)
-                    .setLoadControl(loadControl)
+//                    .setLoadControl(loadControl)
                     .build().apply {
                     val mediaItem = MediaItem.fromUri(videoInfo!!.imageUrl)
                     setMediaItem(mediaItem)
