@@ -126,10 +126,6 @@ fun HPlayer(player: ExoPlayer) {
                         // Set playWhenReady to true for auto-play
                         player.playWhenReady = true
 
-
-                        // Hide the controller initially
-                        playerView.hideController()
-
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
