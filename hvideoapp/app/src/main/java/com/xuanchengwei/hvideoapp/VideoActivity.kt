@@ -42,14 +42,14 @@ class VideoActivity : ComponentActivity() {
                 }
             }
 
-            VideoPlayer(url = videoInfo!!.imageUrl, exoPlayer = player)
+            VideoPlayer(exoPlayer = player)
         }
     }
 }
 
 
 @Composable
-fun VideoPlayer(url: String,exoPlayer: ExoPlayer) {
+fun VideoPlayer(exoPlayer: ExoPlayer) {
     val ctx = LocalContext.current
 
     DisposableEffect(Unit) {
