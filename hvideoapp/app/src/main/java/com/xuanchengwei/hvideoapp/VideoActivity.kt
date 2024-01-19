@@ -131,13 +131,11 @@ fun HPlayer(player: ExoPlayer) {
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-        ){
-
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Row(
-                modifier = Modifier,
-
+                modifier = Modifier
             ) {
-
                 Text(text = "<<10s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition - 10000L
                     player.seekTo(newPosition)
@@ -157,12 +155,10 @@ fun HPlayer(player: ExoPlayer) {
                 })
             }
 
-
             Row(
-                modifier = Modifier,
-                horizontalArrangement = Arrangement.End // Align the Row to the right
+                modifier = Modifier
             ) {
-
+                // This Row will be aligned to the right
                 Text(text = ">>10s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition + 10000L
                     player.seekTo(newPosition)
@@ -182,6 +178,7 @@ fun HPlayer(player: ExoPlayer) {
                 })
             }
         }
+
 
     }
 
