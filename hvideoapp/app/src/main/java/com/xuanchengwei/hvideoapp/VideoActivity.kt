@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -80,7 +81,8 @@ fun HPlayer(player: ExoPlayer) {
     val context = LocalContext.current
 
 
-    Box(modifier = Modifier.fillMaxWidth()) {
+    Box(modifier = Modifier.fillMaxWidth()
+        .fillMaxHeight(0.5f)) {
         AndroidView(
             factory = { ctx ->
                 LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
