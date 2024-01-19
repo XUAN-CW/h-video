@@ -123,7 +123,7 @@ fun HPlayer(player: ExoPlayer) {
         // Fast forward button
         Button(
             onClick = {
-                val newPosition = currentPosition + 30000L // 30 seconds in milliseconds
+                val newPosition = player.currentPosition  + 30000L
                 player.seekTo(newPosition)
                 currentPosition = newPosition
             },
