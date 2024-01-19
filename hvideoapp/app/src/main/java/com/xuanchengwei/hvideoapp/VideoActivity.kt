@@ -126,6 +126,18 @@ fun HPlayer(player: ExoPlayer) {
                         // Set playWhenReady to true for auto-play
                         player.playWhenReady = true
 
+
+                        // Set a click listener for the play/pause button
+                        playerView.findViewById<View>(androidx.media3.ui.R.id.exo_play_pause).setOnClickListener {
+                            // Perform actions when the play/pause button is clicked
+                            if (player.isPlaying) {
+                                player.pause()
+                            } else {
+                                playerView.hideController()
+                                player.play()
+                            }
+                        }
+
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
