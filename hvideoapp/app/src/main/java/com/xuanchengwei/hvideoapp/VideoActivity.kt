@@ -1,6 +1,8 @@
 package com.xuanchengwei.hvideoapp
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -81,7 +83,7 @@ class VideoActivity : ComponentActivity() {
 }
 
 
-@Composable
+@OptIn(UnstableApi::class) @Composable
 fun HPlayer(player: ExoPlayer) {
     var currentPosition by remember { mutableStateOf(0L) }
 
@@ -114,18 +116,28 @@ fun HPlayer(player: ExoPlayer) {
                         playerView.setControllerVisibilityListener(
                             PlayerView.ControllerVisibilityListener { visibility ->
                                 if (visibility == View.VISIBLE) {
-                                    Log.i("PlayerView.ControllerVisibilityListener","View.VISIBLE")
+                                    Log.i("PlayerView.ControllerVisibilityListener", "View.VISIBLE")
+
+                                    // Hide the controller after a delay (e.g., 3 seconds)
+                                    Handler(Looper.getMainLooper()).postDelayed({
+                                        playerView.hideController()
+                                    }, 0) // 3000 milliseconds (3 seconds)
                                 } else {
-                                    Log.i("PlayerView.ControllerVisibilityListener","not View.VISIBLE")
+                                    Log.i("PlayerView.ControllerVisibilityListener", "not View.VISIBLE")
                                 }
                             }
                         )
                         playerView.player = player
+
+                        // Set playWhenReady to true for auto-play
+                        player.playWhenReady = true
+
                         // Configure additional properties if needed
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
             )
+
 
         }
 
