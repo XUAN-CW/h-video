@@ -114,11 +114,8 @@ fun HPlayer(player: ExoPlayer) {
                         val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
 
 
-
                         playerView.setControllerVisibilityListener(
                             PlayerView.ControllerVisibilityListener { visibility ->
-                                // Hide the controller after a delay (e.g., 3 seconds)
-                                playerView.hideController()
                                 if (visibility == View.VISIBLE) {
                                     Log.i("PlayerView.ControllerVisibilityListener", "View.VISIBLE")
                                 } else {
@@ -133,7 +130,10 @@ fun HPlayer(player: ExoPlayer) {
                         // Set playWhenReady to true for auto-play
                         player.playWhenReady = true
 
-                        // Configure additional properties if needed
+
+                        // Hide the controller initially
+                        playerView.hideController()
+
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
