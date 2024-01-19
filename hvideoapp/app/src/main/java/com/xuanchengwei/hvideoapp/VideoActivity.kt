@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.annotation.OptIn
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -128,11 +130,12 @@ fun HPlayer(player: ExoPlayer) {
 
 
         Row(
-            modifier = Modifier,
+            modifier = Modifier.fillMaxWidth(),
         ){
 
             Row(
                 modifier = Modifier,
+
             ) {
 
                 Text(text = "<<10s", fontSize = 15.sp, modifier = Modifier.clickable {
@@ -157,6 +160,7 @@ fun HPlayer(player: ExoPlayer) {
 
             Row(
                 modifier = Modifier,
+                horizontalArrangement = Arrangement.End // Align the Row to the right
             ) {
 
                 Text(text = ">>10s", fontSize = 15.sp, modifier = Modifier.clickable {
