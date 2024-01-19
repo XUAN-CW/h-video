@@ -12,10 +12,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
@@ -61,11 +66,14 @@ class VideoActivity : ComponentActivity() {
 
 @Composable
 fun HPlayer(player: ExoPlayer) {
+    var currentPosition by remember { mutableStateOf(0L) }
+
     player.addListener(object : Player.Listener {
         override fun onPlaybackStateChanged(playbackState: Int) {
             Log.i("onPlaybackStateChanged", playbackState.toString())
         }
     })
+
     val context = LocalContext.current
 
     DisposableEffect(Unit) {
@@ -73,28 +81,46 @@ fun HPlayer(player: ExoPlayer) {
             player.release()
         }
     }
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+    ){
 
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight(0.4f)) {
-        AndroidView(
-            factory = { ctx ->
-                LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
-                    val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
-                    playerView.setControllerVisibilityListener(
-                        PlayerView.ControllerVisibilityListener { visibility ->
-                            if (visibility == View.VISIBLE) {
-                                Log.i("PlayerView.ControllerVisibilityListener","View.VISIBLE")
-                            } else {
-                                Log.i("PlayerView.ControllerVisibilityListener","not View.VISIBLE")
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.8f)) {
+            AndroidView(
+                factory = { ctx ->
+                    LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
+                        val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                        playerView.setControllerVisibilityListener(
+                            PlayerView.ControllerVisibilityListener { visibility ->
+                                if (visibility == View.VISIBLE) {
+                                    Log.i("PlayerView.ControllerVisibilityListener","View.VISIBLE")
+                                } else {
+                                    Log.i("PlayerView.ControllerVisibilityListener","not View.VISIBLE")
+                                }
                             }
-                        }
-                    )
-                    playerView.player = player
-                    // Configure additional properties if needed
-                }
+                        )
+                        playerView.player = player
+                        // Configure additional properties if needed
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+        }
+
+        // Fast forward button
+        Button(
+            onClick = {
+                val newPosition = currentPosition + 30000L // 30 seconds in milliseconds
+                player.seekTo(newPosition)
+                currentPosition = newPosition
             },
-            modifier = Modifier.fillMaxWidth()
-        )
+        ) {
+            Text("Fast Forward 30s")
+        }
     }
+
 }
