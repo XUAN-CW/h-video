@@ -81,7 +81,8 @@ fun HPlayer(player: ExoPlayer) {
     val context = LocalContext.current
 
 
-    Box(modifier = Modifier.fillMaxWidth()
+    Box(modifier = Modifier
+        .fillMaxWidth()
         .fillMaxHeight(0.4f)) {
         AndroidView(
             factory = { ctx ->
@@ -103,4 +104,5 @@ fun HPlayer(player: ExoPlayer) {
             modifier = Modifier.fillMaxWidth()
         )
     }
+    
 }
