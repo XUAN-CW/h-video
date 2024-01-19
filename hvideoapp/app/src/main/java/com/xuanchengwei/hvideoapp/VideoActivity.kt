@@ -46,10 +46,11 @@ class VideoActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxSize(),
             ){
-                Box(modifier = Modifier.fillMaxWidth()
-                    .fillMaxHeight(0.4f)){
-                    VideoPlayer(exoPlayer = player)
-                }
+//                Box(modifier = Modifier.fillMaxWidth()
+//                    .fillMaxHeight(0.4f)){
+//                    VideoPlayer(exoPlayer = player)
+//                }
+                HPlayer(player = player)
                 Text(text = "aaa")
 
             }
@@ -57,34 +58,6 @@ class VideoActivity : ComponentActivity() {
     }
 }
 
-
-@Composable
-fun VideoPlayer(exoPlayer: ExoPlayer) {
-    val ctx = LocalContext.current
-
-    DisposableEffect(Unit) {
-        onDispose {
-            exoPlayer.release()
-        }
-    }
-
-    AndroidView(
-        factory = { context ->
-            PlayerView(context).apply {
-                player = exoPlayer
-            }
-        },
-        update = { view ->
-            // Set media source
-            // Example: val mediaSource = buildMediaSource(Uri.parse(url))
-            // exoPlayer.setMediaSource(mediaSource)
-            // Prepare the player
-            exoPlayer.prepare()
-            // Start playback
-            exoPlayer.playWhenReady = true
-        }
-    )
-}
 
 @Composable
 fun HPlayer(player: ExoPlayer) {
@@ -95,6 +68,11 @@ fun HPlayer(player: ExoPlayer) {
     })
     val context = LocalContext.current
 
+    DisposableEffect(Unit) {
+        onDispose {
+            player.release()
+        }
+    }
 
     Box(modifier = Modifier
         .fillMaxWidth()
