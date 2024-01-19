@@ -16,20 +16,8 @@
     android:paddingTop="4dp"
     android:orientation="horizontal">
 
-
-    <ImageButton android:id="@id/exo_rew"
-      style="@style/ExoMediaButton.Rewind"
-
-        android:src="@drawable/ic_exo_icon_rewind"/>
-
     <ImageButton android:id="@id/exo_play_pause"
       style="@style/ExoMediaButton.Play"/>
-
-    <ImageButton android:id="@id/exo_ffwd"
-      style="@style/ExoMediaButton.FastForward"
-        android:src="@drawable/ic_exo_icon_fastforward"/>
-
-
 
   </LinearLayout>
 
