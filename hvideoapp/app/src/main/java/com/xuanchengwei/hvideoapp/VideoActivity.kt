@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.OptIn
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -134,39 +135,23 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier,
             ) {
 
-                Button(
-                    modifier = Modifier
-                        .wrapContentSize(), // This ensures the button wraps its content
-                    onClick = {
-                        val newPosition = player.currentPosition - 10000L
-                        player.seekTo(newPosition)
-                        currentPosition = newPosition
-                    },
-                ) {
-                    Text(text = "<<10s", fontSize = 10.sp,)
-                }
+                Text(text = "<<10s", fontSize = 10.sp, modifier = Modifier.clickable {
+                    val newPosition = player.currentPosition - 10000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                })
 
-                // Fast forward button
-                Button(
-                    onClick = {
-                        val newPosition = player.currentPosition - 60000L
-                        player.seekTo(newPosition)
-                        currentPosition = newPosition
-                    },
-                ) {
-                    Text("<<60s")
-                }
+                Text(text = "<<30s", fontSize = 10.sp, modifier = Modifier.clickable {
+                    val newPosition = player.currentPosition - 30000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                })
 
-                // Fast forward button
-                Button(
-                    onClick = {
-                        val newPosition = player.currentPosition - 300000L
-                        player.seekTo(newPosition)
-                        currentPosition = newPosition
-                    },
-                ) {
-                    Text("<<5m")
-                }
+                Text(text = "<<5m", fontSize = 10.sp, modifier = Modifier.clickable {
+                    val newPosition = player.currentPosition - 300000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                })
             }
 
 
@@ -174,36 +159,23 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier,
             ) {
 
-                Button(
-                    onClick = {
-                        val newPosition = player.currentPosition  + 10000L
-                        player.seekTo(newPosition)
-                        currentPosition = newPosition
-                    },
-                ) {
-                    Text(">>10s")
-                }
-                // Fast forward button
-                Button(
-                    onClick = {
-                        val newPosition = player.currentPosition  + 60000L
-                        player.seekTo(newPosition)
-                        currentPosition = newPosition
-                    },
-                ) {
-                    Text(">>60s")
-                }
+                Text(text = ">>10s", fontSize = 10.sp, modifier = Modifier.clickable {
+                    val newPosition = player.currentPosition + 10000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                })
 
-                // Fast forward button
-                Button(
-                    onClick = {
-                        val newPosition = player.currentPosition  + 300000L
-                        player.seekTo(newPosition)
-                        currentPosition = newPosition
-                    },
-                ) {
-                    Text(">>5m")
-                }
+                Text(text = ">>30s", fontSize = 10.sp, modifier = Modifier.clickable {
+                    val newPosition = player.currentPosition + 30000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                })
+
+                Text(text = ">>5m", fontSize = 10.sp, modifier = Modifier.clickable {
+                    val newPosition = player.currentPosition + 300000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                })
             }
         }
 
