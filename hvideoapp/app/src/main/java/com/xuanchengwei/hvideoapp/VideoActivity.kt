@@ -10,9 +10,11 @@ import androidx.annotation.OptIn
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -119,35 +121,42 @@ fun HPlayer(player: ExoPlayer) {
             )
 
         }
-        Button(
-            onClick = {
-                val newPosition = player.currentPosition  + 10000L
-                player.seekTo(newPosition)
-                currentPosition = newPosition
-            },
-        ) {
-            Text(">>10s")
-        }
-        // Fast forward button
-        Button(
-            onClick = {
-                val newPosition = player.currentPosition  + 60000L
-                player.seekTo(newPosition)
-                currentPosition = newPosition
-            },
-        ) {
-            Text(">>60s")
-        }
 
-        // Fast forward button
-        Button(
-            onClick = {
-                val newPosition = player.currentPosition  + 300000L
-                player.seekTo(newPosition)
-                currentPosition = newPosition
-            },
+
+        Row(
+            modifier = Modifier,
         ) {
-            Text(">>5m")
+
+            Button(
+                onClick = {
+                    val newPosition = player.currentPosition  + 10000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                },
+            ) {
+                Text(">>10s")
+            }
+            // Fast forward button
+            Button(
+                onClick = {
+                    val newPosition = player.currentPosition  + 60000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                },
+            ) {
+                Text(">>60s")
+            }
+
+            // Fast forward button
+            Button(
+                onClick = {
+                    val newPosition = player.currentPosition  + 300000L
+                    player.seekTo(newPosition)
+                    currentPosition = newPosition
+                },
+            ) {
+                Text(">>5m")
+            }
         }
     }
 
