@@ -155,7 +155,6 @@ fun HPlayer(player: ExoPlayer) {
 
         LinearProgressIndicator(
             progress = currentPosition.toFloat() /allDuration,
-
             modifier = Modifier
                 .fillMaxWidth()
                 .height(2.dp),
