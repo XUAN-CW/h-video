@@ -157,7 +157,7 @@ fun HPlayer(player: ExoPlayer) {
                     currentPosition = newPosition
                 }
                     .border(1.dp, Color.Black) // Add a border around the text
-                    .padding(3.dp)
+                    .padding(5.dp)
                 )
 
                 Text(text = "<<30s", fontSize = 15.sp, modifier = Modifier.clickable {
@@ -166,7 +166,7 @@ fun HPlayer(player: ExoPlayer) {
                     currentPosition = newPosition
                 }
                     .border(1.dp, Color.Black) // Add a border around the text
-                    .padding(3.dp)
+                    .padding(5.dp)
                 )
 
                 Text(text = "<<5m", fontSize = 15.sp, modifier = Modifier.clickable {
@@ -175,7 +175,7 @@ fun HPlayer(player: ExoPlayer) {
                     currentPosition = newPosition
                 }
                     .border(1.dp, Color.Black) // Add a border around the text
-                    .padding(3.dp)
+                    .padding(5.dp)
                 )
             }
 
@@ -189,7 +189,7 @@ fun HPlayer(player: ExoPlayer) {
                     currentPosition = newPosition
                 }
                     .border(1.dp, Color.Black) // Add a border around the text
-                    .padding(3.dp)
+                    .padding(5.dp)
                 )
 
                 Text(text = ">>30s", fontSize = 15.sp, modifier = Modifier.clickable {
@@ -198,7 +198,7 @@ fun HPlayer(player: ExoPlayer) {
                     currentPosition = newPosition
                 }
                     .border(1.dp, Color.Black) // Add a border around the text
-                    .padding(3.dp)
+                    .padding(5.dp)
                 )
 
                 Text(text = ">>5m", fontSize = 15.sp, modifier = Modifier.clickable {
@@ -207,7 +207,7 @@ fun HPlayer(player: ExoPlayer) {
                     currentPosition = newPosition
                 }
                     .border(1.dp, Color.Black) // Add a border around the text
-                    .padding(3.dp)
+                    .padding(5.dp)
                 )
             }
         }
