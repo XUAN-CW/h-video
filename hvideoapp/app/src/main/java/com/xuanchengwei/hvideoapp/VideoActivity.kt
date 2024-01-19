@@ -135,19 +135,19 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier,
             ) {
 
-                Text(text = "<<10s", fontSize = 10.sp, modifier = Modifier.clickable {
+                Text(text = "<<10s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition - 10000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
                 })
 
-                Text(text = "<<30s", fontSize = 10.sp, modifier = Modifier.clickable {
+                Text(text = "<<30s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition - 30000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
                 })
 
-                Text(text = "<<5m", fontSize = 10.sp, modifier = Modifier.clickable {
+                Text(text = "<<5m", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition - 300000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
@@ -159,19 +159,19 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier,
             ) {
 
-                Text(text = ">>10s", fontSize = 10.sp, modifier = Modifier.clickable {
+                Text(text = ">>10s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition + 10000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
                 })
 
-                Text(text = ">>30s", fontSize = 10.sp, modifier = Modifier.clickable {
+                Text(text = ">>30s", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition + 30000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
                 })
 
-                Text(text = ">>5m", fontSize = 10.sp, modifier = Modifier.clickable {
+                Text(text = ">>5m", fontSize = 15.sp, modifier = Modifier.clickable {
                     val newPosition = player.currentPosition + 300000L
                     player.seekTo(newPosition)
                     currentPosition = newPosition
