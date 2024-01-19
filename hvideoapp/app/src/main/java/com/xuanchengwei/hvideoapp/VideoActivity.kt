@@ -26,6 +26,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,6 +47,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
+import kotlinx.coroutines.delay
 
 
 class VideoActivity : ComponentActivity() {
@@ -93,17 +95,10 @@ fun HPlayer(player: ExoPlayer) {
     val context = LocalContext.current
 
 
-    DisposableEffect(player) {
-        val listener = object : Player.Listener {
-            override fun onPositionDiscontinuity(oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo,reason: Int) {
-                currentPosition = player.currentPosition
-            }
-        }
-
-        player.addListener(listener)
-
-        onDispose {
-            player.removeListener(listener)
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(100)
+            currentPosition =player.currentPosition
         }
     }
 
