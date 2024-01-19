@@ -158,6 +158,7 @@ fun HPlayer(player: ExoPlayer) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(2.dp),
+            color = Color(0xFFed5a65)
         )
 
         Row(
