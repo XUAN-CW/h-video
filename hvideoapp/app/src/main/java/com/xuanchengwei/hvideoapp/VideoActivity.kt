@@ -82,7 +82,7 @@ fun HPlayer(player: ExoPlayer) {
 
 
     Box(modifier = Modifier.fillMaxWidth()
-        .fillMaxHeight(0.5f)) {
+        .fillMaxHeight(0.4f)) {
         AndroidView(
             factory = { ctx ->
                 LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
