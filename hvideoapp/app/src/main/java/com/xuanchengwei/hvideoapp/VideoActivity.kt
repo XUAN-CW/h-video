@@ -66,8 +66,6 @@ class VideoActivity : ComponentActivity() {
 //                    VideoPlayer(exoPlayer = player)
 //                }
                 HPlayer(player = player)
-                Text(text = "aaa")
-
             }
         }
     }
