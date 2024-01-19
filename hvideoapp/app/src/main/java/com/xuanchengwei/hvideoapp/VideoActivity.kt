@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +23,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
@@ -85,10 +88,11 @@ fun HPlayer(player: ExoPlayer) {
         modifier = Modifier
             .fillMaxSize(),
     ){
-
+        val screenWidth = LocalConfiguration.current.screenWidthDp.dp
         Box(modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.8f)) {
+
+            .height((screenWidth * 9 / 16))) {
             AndroidView(
                 factory = { ctx ->
                     LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
