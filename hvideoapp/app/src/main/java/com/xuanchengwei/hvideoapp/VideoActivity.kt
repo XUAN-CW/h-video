@@ -136,7 +136,6 @@ fun HPlayer(player: ExoPlayer) {
 
                 Button(
                     modifier = Modifier
-                        .padding(0.dp)
                         .wrapContentSize(), // This ensures the button wraps its content
                     onClick = {
                         val newPosition = player.currentPosition - 10000L
