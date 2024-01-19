@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -134,15 +135,18 @@ fun HPlayer(player: ExoPlayer) {
             ) {
 
                 Button(
-                    modifier = Modifier.wrapContentSize(),
+                    modifier = Modifier
+                        .padding(0.dp)
+                        .wrapContentSize(), // This ensures the button wraps its content
                     onClick = {
                         val newPosition = player.currentPosition - 10000L
                         player.seekTo(newPosition)
                         currentPosition = newPosition
                     },
                 ) {
-                    Text(text = "<<10s",fontSize = 10.sp,)
+                    Text(text = "<<10s", fontSize = 10.sp,)
                 }
+
                 // Fast forward button
                 Button(
                     onClick = {
