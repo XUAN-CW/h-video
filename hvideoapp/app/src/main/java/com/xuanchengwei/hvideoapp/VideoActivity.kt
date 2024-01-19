@@ -20,6 +20,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.SimpleExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
@@ -41,15 +42,38 @@ class VideoActivity : ComponentActivity() {
                 }
             }
 
-            DisposableEffect(Lifecycle.Event.ON_DESTROY) {
-                onDispose {
-                    player.release()
-                }
-            }
-
-            HPlayer(player = player)
+            VideoPlayer(url = videoInfo!!.imageUrl, exoPlayer = player)
         }
     }
+}
+
+
+@Composable
+fun VideoPlayer(url: String,exoPlayer: ExoPlayer) {
+    val ctx = LocalContext.current
+
+    DisposableEffect(Unit) {
+        onDispose {
+            exoPlayer.release()
+        }
+    }
+
+    AndroidView(
+        factory = { context ->
+            PlayerView(context).apply {
+                player = exoPlayer
+            }
+        },
+        update = { view ->
+            // Set media source
+            // Example: val mediaSource = buildMediaSource(Uri.parse(url))
+            // exoPlayer.setMediaSource(mediaSource)
+            // Prepare the player
+            exoPlayer.prepare()
+            // Start playback
+            exoPlayer.playWhenReady = true
+        }
+    )
 }
 
 @Composable
