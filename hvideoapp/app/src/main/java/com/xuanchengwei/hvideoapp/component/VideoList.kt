@@ -29,7 +29,7 @@ fun VideoList() {
             duration = "12:35"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.106:8083/SHA1_WORK_DIR/636/6361a32eeaff94e2503932c2d2766bdb8bd16230.mp4",
+            imageUrl = "http://192.168.0.106:8083/SHA1_WORK_DIR/SHA1/636/6361a32eeaff94e2503932c2d2766bdb8bd16230.mp4",
             title = "Second VideoInfo Title",
             views = "500K views",
             duration = "08:20"
