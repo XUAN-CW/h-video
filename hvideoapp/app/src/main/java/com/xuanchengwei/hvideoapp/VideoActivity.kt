@@ -52,7 +52,6 @@ class VideoActivity : ComponentActivity() {
                 Box(modifier = Modifier.fillMaxWidth()
                     .fillMaxHeight(0.4f)){
                     VideoPlayer(exoPlayer = player)
-
                 }
                 Text(text = "aaa")
 
