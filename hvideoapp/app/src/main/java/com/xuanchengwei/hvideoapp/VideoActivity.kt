@@ -57,7 +57,7 @@ class VideoActivity : ComponentActivity() {
             val context = this
             val player = remember {
                 val loadControl: DefaultLoadControl = DefaultLoadControl.Builder()
-                    .setBufferDurationsMs(5000, 1000000, 500, 500)
+                    .setBufferDurationsMs(500, 10000000, 500, 500)
                     .build()
                 ExoPlayer.Builder(context)
                     .setLoadControl(loadControl)
