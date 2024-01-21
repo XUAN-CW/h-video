@@ -119,8 +119,25 @@ fun HPlayer(player: ExoPlayer) {
                                 }
                             }
                         )
+
                         playerView.setOnClickListener {
-                            Log.i("setOnClickListener", "setOnClickListener")
+                            val currentTime = System.currentTimeMillis()
+
+                            if (currentTime - lastClickTime <= doubleClickThreshold) {
+                                // Double click detected
+                                isPlaying = !isPlaying
+                                if (isPlaying) {
+                                    exoPlayer.setMediaItem(
+                                        MediaItem.fromUri("your_media_url_here")
+                                    )
+                                    exoPlayer.prepare()
+                                    exoPlayer.play()
+                                } else {
+                                    exoPlayer.pause()
+                                }
+                            }
+
+                            lastClickTime = currentTime
                         }
 
                         playerView.player = player
