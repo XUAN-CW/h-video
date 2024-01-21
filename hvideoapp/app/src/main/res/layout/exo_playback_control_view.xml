@@ -7,6 +7,7 @@
   android:layoutDirection="ltr"
   android:background="#CC000000"
   android:orientation="vertical"
+    android:id="@+id/xuan_playback_control_view"
   >
 
 <!--  <LinearLayout-->
