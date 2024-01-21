@@ -38,6 +38,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
+import com.xuanchengwei.baizizhan.constaint.Constants
 import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
 import kotlinx.coroutines.delay
@@ -110,10 +111,19 @@ fun HPlayer(player: ExoPlayer) {
                 factory = { ctx ->
                     LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
                         val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
+                        var lastClickTime = 0L
+
                         playerView.setControllerVisibilityListener(
                             PlayerView.ControllerVisibilityListener { visibility ->
                                 if (visibility == View.VISIBLE) {
-                                    Log.i("PlayerView.ControllerVisibilityListener", "View.VISIBLE")
+                                    if(player.isPlaying){
+                                        if ( System.currentTimeMillis() - lastClickTime <= Constants.doubleClickThreshold) {
+                                            // Double click detected
+                                            if (player.isPlaying) {
+                                                playerView.hideController()
+                                            }
+                                        }
+                                    }
                                 } else {
                                     Log.i("PlayerView.ControllerVisibilityListener", "not View.VISIBLE")
                                 }
@@ -123,17 +133,13 @@ fun HPlayer(player: ExoPlayer) {
                         playerView.setOnClickListener {
                             val currentTime = System.currentTimeMillis()
 
-                            if (currentTime - lastClickTime <= doubleClickThreshold) {
+                            if (currentTime - lastClickTime <= Constants.doubleClickThreshold) {
                                 // Double click detected
-                                isPlaying = !isPlaying
-                                if (isPlaying) {
-                                    exoPlayer.setMediaItem(
-                                        MediaItem.fromUri("your_media_url_here")
-                                    )
-                                    exoPlayer.prepare()
-                                    exoPlayer.play()
+                                if (player.isPlaying) {
+                                    player.pause()
                                 } else {
-                                    exoPlayer.pause()
+                                    playerView.hideController()
+                                    player.play()
                                 }
                             }
 
