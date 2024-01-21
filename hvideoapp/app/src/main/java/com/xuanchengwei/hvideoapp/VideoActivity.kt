@@ -1,7 +1,6 @@
 package com.xuanchengwei.hvideoapp
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,19 +18,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
@@ -42,7 +36,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
@@ -126,7 +119,9 @@ fun HPlayer(player: ExoPlayer) {
                                 }
                             }
                         )
-
+                        playerView.setOnClickListener {
+                            Log.i("setOnClickListener", "setOnClickListener")
+                        }
 
                         playerView.player = player
 
@@ -134,16 +129,16 @@ fun HPlayer(player: ExoPlayer) {
                         player.playWhenReady = true
 
 
-                        // Set a click listener for the play/pause button
-                        playerView.findViewById<View>(androidx.media3.ui.R.id.exo_play_pause).setOnClickListener {
-                            // Perform actions when the play/pause button is clicked
-                            if (player.isPlaying) {
-                                player.pause()
-                            } else {
-                                playerView.hideController()
-                                player.play()
-                            }
-                        }
+//                        // Set a click listener for the play/pause button
+//                        playerView.findViewById<View>(androidx.media3.ui.R.id.exo_play_pause).setOnClickListener {
+//                            // Perform actions when the play/pause button is clicked
+//                            if (player.isPlaying) {
+//                                player.pause()
+//                            } else {
+//                                playerView.hideController()
+//                                player.play()
+//                            }
+//                        }
 
                     }
                 },
@@ -168,29 +163,32 @@ fun HPlayer(player: ExoPlayer) {
             Row(
                 modifier = Modifier
             ) {
-                Text(text = "<<10s", fontSize = 15.sp, modifier = Modifier.clickable {
-                    val newPosition = player.currentPosition - 10000L
-                    player.seekTo(newPosition)
-                    currentPosition = newPosition
-                }
+                Text(text = "<<10s", fontSize = 15.sp, modifier = Modifier
+                    .clickable {
+                        val newPosition = player.currentPosition - 10000L
+                        player.seekTo(newPosition)
+                        currentPosition = newPosition
+                    }
                     .border(1.dp, Color.Black) // Add a border around the text
                     .padding(5.dp)
                 )
 
-                Text(text = "<<30s", fontSize = 15.sp, modifier = Modifier.clickable {
-                    val newPosition = player.currentPosition - 30000L
-                    player.seekTo(newPosition)
-                    currentPosition = newPosition
-                }
+                Text(text = "<<30s", fontSize = 15.sp, modifier = Modifier
+                    .clickable {
+                        val newPosition = player.currentPosition - 30000L
+                        player.seekTo(newPosition)
+                        currentPosition = newPosition
+                    }
                     .border(1.dp, Color.Black) // Add a border around the text
                     .padding(5.dp)
                 )
 
-                Text(text = "<<5m", fontSize = 15.sp, modifier = Modifier.clickable {
-                    val newPosition = player.currentPosition - 300000L
-                    player.seekTo(newPosition)
-                    currentPosition = newPosition
-                }
+                Text(text = "<<5m", fontSize = 15.sp, modifier = Modifier
+                    .clickable {
+                        val newPosition = player.currentPosition - 300000L
+                        player.seekTo(newPosition)
+                        currentPosition = newPosition
+                    }
                     .border(1.dp, Color.Black) // Add a border around the text
                     .padding(5.dp)
                 )
@@ -200,29 +198,32 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier
             ) {
                 // This Row will be aligned to the right
-                Text(text = ">>10s", fontSize = 15.sp, modifier = Modifier.clickable {
-                    val newPosition = player.currentPosition + 10000L
-                    player.seekTo(newPosition)
-                    currentPosition = newPosition
-                }
+                Text(text = ">>10s", fontSize = 15.sp, modifier = Modifier
+                    .clickable {
+                        val newPosition = player.currentPosition + 10000L
+                        player.seekTo(newPosition)
+                        currentPosition = newPosition
+                    }
                     .border(1.dp, Color.Black) // Add a border around the text
                     .padding(5.dp)
                 )
 
-                Text(text = ">>30s", fontSize = 15.sp, modifier = Modifier.clickable {
-                    val newPosition = player.currentPosition + 30000L
-                    player.seekTo(newPosition)
-                    currentPosition = newPosition
-                }
+                Text(text = ">>30s", fontSize = 15.sp, modifier = Modifier
+                    .clickable {
+                        val newPosition = player.currentPosition + 30000L
+                        player.seekTo(newPosition)
+                        currentPosition = newPosition
+                    }
                     .border(1.dp, Color.Black) // Add a border around the text
                     .padding(5.dp)
                 )
 
-                Text(text = ">>5m", fontSize = 15.sp, modifier = Modifier.clickable {
-                    val newPosition = player.currentPosition + 300000L
-                    player.seekTo(newPosition)
-                    currentPosition = newPosition
-                }
+                Text(text = ">>5m", fontSize = 15.sp, modifier = Modifier
+                    .clickable {
+                        val newPosition = player.currentPosition + 300000L
+                        player.seekTo(newPosition)
+                        currentPosition = newPosition
+                    }
                     .border(1.dp, Color.Black) // Add a border around the text
                     .padding(5.dp)
                 )
