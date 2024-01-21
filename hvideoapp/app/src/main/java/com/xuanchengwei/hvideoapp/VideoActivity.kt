@@ -164,9 +164,9 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier
             ) {
 
-                Text(text = "<<5m", fontSize = 15.sp, modifier = Modifier
+                Text(text = "<<3m", fontSize = 15.sp, modifier = Modifier
                     .clickable {
-                        val newPosition = player.currentPosition - 300000L
+                        val newPosition = player.currentPosition - 180000L
                         player.seekTo(newPosition)
                         currentPosition = newPosition
                     }
@@ -183,9 +183,9 @@ fun HPlayer(player: ExoPlayer) {
                     .padding(5.dp)
                 )
 
-                Text(text = "<<10s", fontSize = 15.sp, modifier = Modifier
+                Text(text = "<<5s", fontSize = 15.sp, modifier = Modifier
                     .clickable {
-                        val newPosition = player.currentPosition - 10000L
+                        val newPosition = player.currentPosition - 5000L
                         player.seekTo(newPosition)
                         currentPosition = newPosition
                     }
@@ -198,9 +198,9 @@ fun HPlayer(player: ExoPlayer) {
                 modifier = Modifier
             ) {
                 // This Row will be aligned to the right
-                Text(text = ">>10s", fontSize = 15.sp, modifier = Modifier
+                Text(text = ">>5s", fontSize = 15.sp, modifier = Modifier
                     .clickable {
-                        val newPosition = player.currentPosition + 10000L
+                        val newPosition = player.currentPosition + 5000L
                         player.seekTo(newPosition)
                         currentPosition = newPosition
                     }
@@ -218,9 +218,9 @@ fun HPlayer(player: ExoPlayer) {
                     .padding(5.dp)
                 )
 
-                Text(text = ">>5m", fontSize = 15.sp, modifier = Modifier
+                Text(text = ">>3m", fontSize = 15.sp, modifier = Modifier
                     .clickable {
-                        val newPosition = player.currentPosition + 300000L
+                        val newPosition = player.currentPosition + 180000L
                         player.seekTo(newPosition)
                         currentPosition = newPosition
                     }
