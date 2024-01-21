@@ -1,11 +1,9 @@
 package com.xuanchengwei.hvideoapp
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.OptIn
@@ -41,7 +39,6 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.xuanchengwei.baizizhan.constaint.Constants
-import com.xuanchengwei.hvideoapp.component.HPlayerView
 import com.xuanchengwei.hvideoapp.component.VideoInfo
 import com.xuanchengwei.hvideoapp.constaint.IntentExtraKey
 import kotlinx.coroutines.delay
@@ -79,7 +76,6 @@ class VideoActivity : ComponentActivity() {
 }
 
 
-@SuppressLint("ResourceType")
 @OptIn(UnstableApi::class) @Composable
 fun HPlayer(player: ExoPlayer) {
     var currentPosition by remember { mutableStateOf(0L) }
@@ -114,9 +110,7 @@ fun HPlayer(player: ExoPlayer) {
             AndroidView(
                 factory = { ctx ->
                     LayoutInflater.from(ctx).inflate(R.layout.hplayer_layout, null, false).apply {
-                        val playerView = this.findViewById<HPlayerView>(R.id.hplayer_view)
-//                        val exoPlaybackControlView = playerView.findViewById<LinearLayout>(R.id.xuan_playback_control_view)
-
+                        val playerView = this.findViewById<PlayerView>(R.id.hplayer_view)
                         var lastClickTime = 0L
 
                         playerView.setControllerVisibilityListener(
