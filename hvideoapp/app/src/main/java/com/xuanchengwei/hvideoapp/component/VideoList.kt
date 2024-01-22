@@ -48,7 +48,7 @@ fun VideoList() {
         ),
         VideoInfo(
             imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/exoplayer_not_work.mkv",
-            title = "mkv_2",
+            title = "exoplayer_not_work.mkv",
             views = "500K views",
             duration = "08:20"
         ),
