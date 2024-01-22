@@ -41,7 +41,7 @@ fun VideoList() {
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Tifa_Mako_Loop 4-1.m4v",
+            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Tifa_Mako_Loop_4-1.m4v",
             title = "m4v",
             views = "500K views",
             duration = "08:20"
@@ -55,6 +55,12 @@ fun VideoList() {
         VideoInfo(
             imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/RBD-787.avi",
             title = "avi",
+            views = "500K views",
+            duration = "08:20"
+        ),
+        VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/null",
+            title = "null",
             views = "500K views",
             duration = "08:20"
         ),
