@@ -35,6 +35,12 @@ fun VideoList() {
             duration = "08:20"
         ),
         VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/mp4_h265_OK.mp4",
+            title = "mp4_h265_OK",
+            views = "500K views",
+            duration = "08:20"
+        ),
+        VideoInfo(
             imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Play_the_Tifan_FPS60.mkv",
             title = "mkv",
             views = "500K views",
