@@ -9,32 +9,17 @@
   android:orientation="vertical"
   >
 
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:paddingTop="4dp"
-    android:orientation="horizontal">
+<!--  <LinearLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:gravity="center"-->
+<!--    android:paddingTop="4dp"-->
+<!--    android:orientation="horizontal">-->
 
-    <ImageButton android:id="@id/exo_rew"
-      style="@style/ExoMediaButton.Rewind"
+<!--    <ImageButton android:id="@id/exo_play_pause"-->
+<!--      style="@style/ExoMediaButton.Play"/>-->
 
-        android:src="@drawable/ic_exo_icon_rewind"/>
-
-
-    <ImageButton android:id="@id/exo_play_pause"
-      style="@style/ExoMediaButton.Play"/>
-
-    <ImageButton android:id="@id/exo_ffwd"
-      style="@style/ExoMediaButton.FastForward"
-        android:src="@drawable/ic_exo_icon_fastforward"/>
-
-
-
-    <ImageButton android:id="@+id/exo_minimal_fullscreen2"
-        style="@style/ExoStyledControls.Button.Bottom.FullScreen"
-        android:src="@drawable/full_screen"/>
-  </LinearLayout>
+<!--  </LinearLayout>-->
 
   <LinearLayout
     android:layout_width="match_parent"

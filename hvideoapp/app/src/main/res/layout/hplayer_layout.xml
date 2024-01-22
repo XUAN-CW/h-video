@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:auto_show="true"
+        app:auto_show="false"
         app:surface_type="surface_view"
         app:use_controller="true"
         app:controller_layout_id="@layout/exo_playback_control_view"/>
