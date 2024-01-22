@@ -24,13 +24,13 @@ fun VideoList() {
     val videoInfoLists = listOf(
         VideoInfo(
             imageUrl = "http://vjs.zencdn.net/v/oceans.mp4",
-            title = "First VideoInfo Title",
+            title = "MP4_oceans",
             views = "1M views",
             duration = "12:35"
         ),
         VideoInfo(
             imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/SHA512/214/2140ba87f823fba3ae33500985f82884fafb8067c8c9d3fff9e6bc40891610c13a5b2a4581f5ebc0d91af7d69902f8ad0270fb9ed1187ba636a4391281c5375c.mp4",
-            title = "Second VideoInfo Title",
+            title = "mp4_4K",
             views = "500K views",
             duration = "08:20"
         ),
