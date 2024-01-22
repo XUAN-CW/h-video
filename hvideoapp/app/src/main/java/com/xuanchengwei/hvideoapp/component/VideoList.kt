@@ -35,8 +35,14 @@ fun VideoList() {
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "https://via.placeholder.com/150.jpg",
-            title = "3 VideoInfo Title",
+            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Play_the_Tifan_FPS60.mkv",
+            title = "mkv",
+            views = "500K views",
+            duration = "08:20"
+        ),
+        VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Tifa_Mako_Loop 4-1.m4v",
+            title = "m4v",
             views = "500K views",
             duration = "08:20"
         ),
