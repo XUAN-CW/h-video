@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -93,6 +94,11 @@ fun HPlayer(player: ExoPlayer) {
         while (true) {
             delay(100)
             currentPosition =player.currentPosition
+        }
+    }
+    DisposableEffect(Unit) {
+        onDispose {
+            player.release()
         }
     }
 
