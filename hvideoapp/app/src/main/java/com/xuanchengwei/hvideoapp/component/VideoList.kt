@@ -46,6 +46,18 @@ fun VideoList() {
             views = "500K views",
             duration = "08:20"
         ),
+        VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/aiqi.mkv",
+            title = "mkv_2",
+            views = "500K views",
+            duration = "08:20"
+        ),
+        VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/RBD-787.avi",
+            title = "avi",
+            views = "500K views",
+            duration = "08:20"
+        ),
     )
 
 
