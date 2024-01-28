@@ -29,44 +29,56 @@ fun VideoList() {
             duration = "12:35"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/SHA512/214/2140ba87f823fba3ae33500985f82884fafb8067c8c9d3fff9e6bc40891610c13a5b2a4581f5ebc0d91af7d69902f8ad0270fb9ed1187ba636a4391281c5375c.mp4",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/SHA512/214/2140ba87f823fba3ae33500985f82884fafb8067c8c9d3fff9e6bc40891610c13a5b2a4581f5ebc0d91af7d69902f8ad0270fb9ed1187ba636a4391281c5375c.mp4",
             title = "mp4_4K",
             views = "500K views",
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/mp4_h265_OK.mp4",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/mp4_h265_OK.mp4",
             title = "mp4_h265_OK",
             views = "500K views",
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Play_the_Tifan_FPS60.mkv",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/Play_the_Tifan_FPS60.mkv",
             title = "mkv",
             views = "500K views",
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/Tifa_Mako_Loop_4-1.m4v",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/Tifa_Mako_Loop_4-1.m4v",
             title = "m4v",
             views = "500K views",
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/exoplayer_not_work.mkv",
-            title = "exoplayer_not_work.mkv",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/aiqi.mkv",
+            title = "aiqi.mkv",
             views = "500K views",
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/SHA1_WORK_DIR/deletable/RBD-787.avi",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/RBD-787.avi",
             title = "avi",
             views = "500K views",
             duration = "08:20"
         ),
         VideoInfo(
-            imageUrl = "http://192.168.0.104:8083/null",
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/null",
             title = "null",
+            views = "500K views",
+            duration = "08:20"
+        ),
+        VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/exi.mkv",
+            title = "悪戯 ～いたずら～ THE ANIMATION 一両目.mkv",
+            views = "500K views",
+            duration = "08:20"
+        ),
+        VideoInfo(
+            imageUrl = "http://192.168.0.104:8083/SHA512_WORK_DIR/deletable/2005-04-08 悪戯～いたずら～ The Animation/(18禁アニメ) (無修正) 悪戯 ～いたずら～ THE ANIMATION 一両目 (DVD 1280x960 H.264 AAC).mp4",
+            title = "悪戯 一両目.mp4",
             views = "500K views",
             duration = "08:20"
         ),
